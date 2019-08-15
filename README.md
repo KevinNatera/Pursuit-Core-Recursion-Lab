@@ -11,6 +11,18 @@ output: 21
 //21 = 6 + 5 + 4 + 3 + 2 + 1
 ```
 
+```swift
+func sumOfOneToN(n: Int) -> Int {
+
+if n == 0 {
+return 0
+}
+
+return n + sumOfOneToN(n: n - 1)
+}
+
+sumOfOneToN(n: 6)
+```
 
 - ### Multiply array
 
@@ -21,6 +33,24 @@ multArr([2, 3, 5]); // returns 30
 multArr([5, 5, 1, 2]); //returns 50
 ```
 
+```swift
+
+func multArr(_ arr: [Int]) -> Int {
+
+if arr.count == 1 { return arr[0] }
+
+let firstElement = arr[0]
+let remainingElements = Array(arr[1...])
+return firstElement * multArr(remainingElements)
+}
+
+
+print(multArr([2, 3, 5]))
+print(multArr([5, 5, 1, 2]))
+```
+
+
+
 - ### Concatenate array
 
 Write a function called `concatArr` that takes in an array of strings as an argument and recursively concatenates the strings together into a single string, with spaces between each original string.
@@ -29,6 +59,23 @@ Write a function called `concatArr` that takes in an array of strings as an argu
 concatArr(['is', 'it', 'tomorrow']); // returns 'is it tomorrow'
 concatArr(['or', 'just', 'the', 'end', 'of', 'time']); //returns 'or just the end of time'
 ```
+
+```swift
+
+func concatArr(_ arr: [String]) -> String {
+
+
+if arr.count == 1 { return arr[0] }
+
+let firstElement = arr[0]
+let remainingElements = Array(arr[1...])
+return "\(firstElement) \(concatArr(remainingElements))"
+
+}
+
+print(concatArr(["is", "it", "tomorrow"])
+```
+
 
 - ### Sum evens
 
@@ -39,6 +86,22 @@ sumEvens([2, 3, 5, 6]); // returns 8
 sumEvens([10, 5, 1, 2, 12]); //returns 24
 ```
 
+```swift
+
+func sumEvens(_ arr:[Int]) -> Int {
+
+if arr.count == 1 { return arr[0] }
+
+let firstElement = arr[0]
+let remainingElements = Array(arr[1...]).filter( { $0 % 2 == 0 } )
+
+return firstElement + sumEvens(remainingElements)
+}
+
+print(sumEvens([10, 5, 1, 2, 12]))
+```
+
+
 - ### Recursive range
 
 Write a function called `range` which takes in two numbers (num1, num2) as arguments. The function should return an array of numbers between num1 and num2.
@@ -46,6 +109,20 @@ Write a function called `range` which takes in two numbers (num1, num2) as argum
 ```js
 range(2,10); // returns [2, 3, 4, 5, 6,7, 8, 9, 10]
 range(17,20); // returns [17, 18, 19, 20]
+```
+
+```swift
+
+func range(_ num1: Int, _ num2: Int) -> [Int] {
+
+if num1 == num2 {
+return [num1]
+}
+
+return [num1] + range(num1 + 1, num2)
+}
+
+range(2, 10)
 ```
 
 
